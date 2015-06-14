@@ -1,22 +1,66 @@
 <?php
 
-if ( ! function_exists( 'infi_scripts' ) ) :
-	function infi_scripts() {
+/**********************
+Enqueue CSS and Scripts
+**********************/
 
-	// Enqueue Main Stylesheet
-	wp_enqueue_style( 'Main Stylesheet', get_stylesheet_directory_uri() . '/assets/css/bootstrap.min.css' );
-        
-    // Enqueue Custom Stylesheet
-	wp_enqueue_style( 'Custom Stylesheet', get_stylesheet_directory_uri() . '/assets/css/custom.css' );
+// loading modernizr and jquery, and reply script
+if( ! function_exists( 'foundationbuddy_scripts_and_styles ' ) ) {
+    
+	function foundationbuddy_scripts_and_styles() {
+	  if (!is_admin()) {
 
-	wp_register_script( 'bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery'), '3.0', true );
+	    // modernizr (without media query polyfill)
+	    wp_register_script( 'modernizr', get_template_directory_uri() . '/js/vendor/modernizr.js', array(), '2.6.2', false );
+          
+	    // ie-only style sheet
+	    wp_register_style( 'foundationbuddy-ie-only', get_template_directory_uri() . '/css/ie.css', array(), '' );
 
-	// Enqueue all registered scripts
-	wp_enqueue_script( 'bootstrap' );
+	    // comment reply script for threaded comments
+	    if( get_option( 'thread_comments' ) )  { wp_enqueue_script( 'comment-reply' ); }
+	    
+	    // adding Foundation scripts file in the footer
+	    wp_register_script( 'foundation-js', get_template_directory_uri() . '/js/foundation/foundation.min.js', array( 'jquery' ), '', true );
+          
+        // adding Fastclick scripts file in the footer
+	    wp_register_script( 'fastclick-js', get_template_directory_uri() . '/js/vendor/fastclick.js', array( 'jquery' ), '1.0.0', true );
+                    
+        // adding wow scripts file in the footer
+	    wp_register_script( 'wow-js', get_template_directory_uri() . '/js/vendor/wow.js', array( 'jquery' ), '', true );
+          
+        // adding Custom scripts file in the footer
+	    wp_register_script( 'custom-js', get_template_directory_uri() . '/js/vendor/custom.js', array( 'jquery' ), '', true );
+          	    
+	    global $is_IE;
+	    if ($is_IE) {
+	       wp_register_script ( 'html5shiv', "/js/vendor/html5.js" , false, true);
+	    }
 
+	    // enqueue styles and scripts
+	    wp_enqueue_script( 'modernizr' );
+	    wp_enqueue_style( 'google-font' );
+	    wp_enqueue_style('foundationbuddy-ie-only');		
+	    wp_enqueue_script( 'foundation-js' );
+        wp_enqueue_script( 'fastclick-js' );
+        wp_enqueue_script( 'wow-js' );
+        wp_enqueue_script( 'custom-js' );
+	    wp_enqueue_script( 'html5shiv' );
+
+	  }
 	}
+    
+}
 
-	add_action( 'wp_enqueue_scripts', 'infi_scripts' );
-endif;
+// adding the conditional wrapper around ie stylesheet
+// source: http://code.garyjones.co.uk/ie-conditional-style-sheets-wordpress/
+if( ! function_exists( 'foundationbuddy_ie_conditional ' ) ) {
+    
+	function foundationbuddy_ie_conditional( $tag, $handle ) {
+		if ( 'foundationbuddy-ie-only' == $handle )
+			$tag = '<!--[if lt IE 9]>' . "\n" . $tag . '<![endif]-->' . "\n";
+		return $tag;
+	}
+    
+}
 
 ?>

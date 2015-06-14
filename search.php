@@ -1,59 +1,31 @@
 <?php get_header(); ?>
-    <div class="container">
-        <div class="row clearfix">
-            <div class="col-md-12 column">
-                
-                <h1 class="text-center page-header-dialogue"><b>Results for "<?php echo get_search_query(); ?>"</b></h1>
-                
-                <!-- the loop -->
-                <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-                    
-                    <!-- single post body -->
-                    <div class="post" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                        
-                        <?php 
-                            if ( has_post_thumbnail() ) {
-                                the_post_thumbnail();
-                            } 
-                        ?>
-                        
-                        <!-- the title of the post -->
-                        <a href="<?php the_permalink(); ?>" class="post-title">
-                            <?php the_title( '<h1>', '</h1>' ); ?>
-                        </a>
 
-                        <div class="post-meta">
-                            
-                            <!-- the avatr of author -->
-                            <?php echo get_avatar( get_the_author_meta( 'ID' ), 24 ); ?>
+<!-- Row for main content area -->
+	<div class="small-12 large-8 columns" id="page-content" role="main">
+	
+	<?php if ( have_posts() ) : ?>
+	
+		<?php /* Start the Loop */ ?>
+		<?php while ( have_posts() ) : the_post(); ?>
+			<?php get_template_part( 'content', get_post_format() ); ?>
+		<?php endwhile; ?>
+		
+		<?php else : ?>
+			<?php get_template_part( 'content', 'none' ); ?>
+		
+	<?php endif; // end have_posts() check ?>
+	
+	<?php /* Display navigation to next/previous pages when applicable */ ?>
+	<?php if ( function_exists('foundationbuddy_pagination') ) { foundationbuddy_pagination(); } else if ( is_paged() ) { ?>
+		<nav id="post-nav">
+			<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'foundationbuddy' ) ); ?></div>
+			<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'foundationbuddy' ) ); ?></div>
+		</nav>
+	<?php } ?>
 
-                            <!-- the link of the author -->
-                            <?php the_author_posts_link(); ?> |
-
-                            <!-- the date -->
-                            <?php the_date(); ?> |
-
-                            <!-- the category -->
-                            <?php the_category( ', ' ); ?>
-                        
-                        </div>
-
-                        <div class="post-excerpt">
-                            
-                            <!--the excerpt of the post -->
-                            <?php the_excerpt(); ?> 
-                        
-                        </div>
-                                                
-                    </div>
-                    <!-- /single post body -->
-                
-                    <?php endwhile; else : ?>
-                    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-                    <?php endif; ?>
-                    <!-- /the loop -->
-
-            </div>
-        </div>
-    </div>
+	</div>
+	<aside id="sidebar" class="small-12 large-4 columns">
+            <?php get_sidebar(); ?>
+        </aside><!-- /#sidebar -->
+		
 <?php get_footer(); ?>

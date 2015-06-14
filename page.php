@@ -1,78 +1,49 @@
+<?php
+/**
+ * The default tempalte for pages.
+ **/
+?>
+
 <?php get_header(); ?>
-    <div class="container">
-        <div class="row clearfix">
-            <?php if ( ! is_dynamic_sidebar() ) : ?>
-                
-                <div class="col-md-12 column">
-            
-            <?php 
-                endif; 
-                if ( is_dynamic_sidebar() ) :        
-            ?>
-                
-                    <div class="col-md-8 column">
-                
-            <?php
-                endif;
-            ?>
-                <!-- the loop -->
-                <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-                    
-                    <!-- single post body -->
-                    <div class="post" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                        
-                        <!-- the title of the post -->
-                        <?php the_title( '<h1 class="post-title text-center">', '</h1>' ); ?>
 
-                        <div class="post-meta text-center">
-                            
-                            <!-- the avatr of author -->
-                            <?php echo get_avatar( get_the_author_meta( 'ID' ), 24 ); ?>
+<!-- Row for main content area -->
+	<div class="small-12 large-8 columns" id="page-content" role="main">
+	
+	<?php /* Start loop */ ?>
+	<?php while (have_posts()) : the_post(); ?>
+		<article <?php post_class('page-card') ?> id="post-<?php the_ID(); ?>">
+			<header>
+				<h1 class="entry-title"><?php the_title(); ?></h1>
+				<?php foundationbuddy_entry_meta(); ?>
+			</header>
+			<div class="entry-content">
+				<?php the_content(); ?>
+			</div>
+			<footer>
+				<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'foundationbuddy'), 'after' => '</p></nav>' )); ?>
+			</footer>
+		</article>
+	   <div class="separator"></div>
+        <?php if( is_single() ) { ?>
+        <div class="entry-author panel">
+			<div class="row">
+				<div class="large-9 columns">
+					<h4><?php the_author_posts_link(); ?></h4>
+					<p class="cover-description"><?php the_author_meta('description'); ?></p>
+				</div>
+                <div class="large-3 columns">
+					<?php echo get_avatar( get_the_author_meta('user_email'), 95 ); ?>
+				</div>
+			</div>
+		</div>
+        <div class="separator"></div>
+        <?php } ?>
+		<?php comments_template(); ?>
+	<?php endwhile; // End the loop ?>
 
-                            <!-- the link of the author -->
-                            <?php the_author_posts_link(); ?> |
-
-                            <!-- the date -->
-                            <?php the_time( get_option( 'date_format' ) ); ?> |
-
-                            <!-- the category -->
-                            <?php the_category( ', ' ); ?>
-                        
-                        </div>
-
-                        <div class="post-body">
-                            
-                            <!--the body of the post -->
-                            <?php the_content(); ?> 
-                        
-                        </div>
-                        
-                        <div class="post-tags">
-                        
-                            <!-- the tags for the post -->
-                            <?php the_tags(); ?>
-                            
-                        </div>
-                                                
-                    </div>
-                    <!-- /single post body -->
-                
-                    <?php endwhile; else : ?>
-                    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-                    <?php endif; ?>
-                    <!-- /the loop -->
-                
-                    <!-- comments template -->
-                    <?php comments_template(); ?> 
-                    
-                    <!-- link other posts -->
-                    <?php wp_link_pages(); ?>
-
-            </div>
-            <div class="col-md-4 column sidebar">
-                <?php get_sidebar(); ?>
-            </div>
-            
-        </div>
-    </div>
+	</div>
+	<aside id="sidebar" class="small-12 large-4 columns">
+        <?php get_sidebar(); ?>
+    </aside><!-- /#sidebar -->
+		
 <?php get_footer(); ?>
