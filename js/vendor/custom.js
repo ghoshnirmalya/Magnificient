@@ -1,12 +1,15 @@
+/* ------------------------------------ */
+/*  Back to top
+/* ------------------------------------ */
 jQuery(document).ready(function($){
 	// browser window scroll (in pixels) after which the "back to top" link is shown
 	var offset = 300,
-		//browser window scroll (in pixels) after which the "back to top" link opacity is reduced
-		offset_opacity = 1200,
-		//duration of the top scrolling animation (in ms)
-		scroll_top_duration = 700,
-		//grab the "back to top" link
-		$back_to_top = $('.back-to-top');
+    //browser window scroll (in pixels) after which the "back to top" link opacity is reduced
+	offset_opacity = 1200,
+	//duration of the top scrolling animation (in ms)
+	scroll_top_duration = 700,
+	//grab the "back to top" link
+	$back_to_top = $('.back-to-top');
 
 	//hide or show the "back to top" link
 	$(window).scroll(function(){
@@ -24,74 +27,70 @@ jQuery(document).ready(function($){
 		 	}, scroll_top_duration
 		);
 	});
-
+    
 });
 
-jQuery(document).ready(function($){
-	//if you change this breakpoint in the style.css file (or _layout.scss if you use SASS), don't forget to update this value as well
-	var MqL = 1170;
-	//move nav element position according to window width
-	moveNavigation();
-	$(window).on('resize', function(){
-		(!window.requestAnimationFrame) ? setTimeout(moveNavigation, 300) : window.requestAnimationFrame(moveNavigation);
-	});
 
-	
-
-	//open search form
-	$('.cd-search-trigger').on('click', function(event){
-		event.preventDefault();
-		toggleSearch();
-		closeNav();
-	});
-
-	
+/* ------------------------------------ */
+/*  Foundation init
+/* ------------------------------------ */
+(function($) {
+		$(document).foundation();
+	})(jQuery);
 
 
-	
+/* ------------------------------------ */
+/*  WOW init
+/* ------------------------------------ */
+new WOW().init();
 
 
+/* ------------------------------------ */
+/*  Fitvids init
+/* ------------------------------------ */
+jQuery('.post').fitVids();
 
-	function toggleSearch(type) {
-		if(type=="close") {
-			//close serach 
-			$('.cd-search').removeClass('is-visible');
-			$('.cd-search-trigger').removeClass('search-is-visible');
-			$('.cd-overlay').removeClass('search-is-visible');
-		} else {
-			//toggle search visibility
-			$('.cd-search').toggleClass('is-visible');
-			$('.cd-search-trigger').toggleClass('search-is-visible');
-			$('.cd-overlay').toggleClass('search-is-visible');
-			if($(window).width() > MqL && $('.cd-search').hasClass('is-visible')) $('.cd-search').find('input[type="search"]').focus();
-			($('.cd-search').hasClass('is-visible')) ? $('.cd-overlay').addClass('is-visible') : $('.cd-overlay').removeClass('is-visible') ;
-		}
-	}
 
-	function checkWindowWidth() {
-		//check window width (scrollbar included)
-		var e = window, 
-            a = 'inner';
-        if (!('innerWidth' in window )) {
-            a = 'client';
-            e = document.documentElement || document.body;
-        }
-        if ( e[ a+'Width' ] >= MqL ) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+/* ------------------------------------ */
+/*  Flexslider init
+/* ------------------------------------ */
+(function($) {
+    $(window).load(function() {
+      $('#slider').flexslider({
+        // change #slider to #carousel to use the carousel and uncomment all the lines
+        animation: "slide",
+        prevText: " ",
+        nextText: " ",
+        slideshow: true,
+        directionNav: true,
+        pauseOnHover: true,
+        slideshowSpeed: 7000,
+        animationSpeed: 600,
+        smoothHeight: true,
+        controlNav: true,
+        animationLoop: true,
+        //slideshow: false,
+        //itemWidth: 210,
+        //itemMargin: 5,
+        //asNavFor: '#slider'
+      });
 
-	function moveNavigation(){
-		var navigation = $('.cd-nav');
-  		var desktop = checkWindowWidth();
-        if ( desktop ) {
-			navigation.detach();
-			navigation.insertBefore('.cd-header-buttons');
-		} else {
-			navigation.detach();
-			navigation.insertAfter('.cd-main-content');
-		}
-	}
-});
+      /*$('#slider').flexslider({
+        animation: "slide",
+        prevText: " ",
+        nextText: " ",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        sync: "#carousel"
+      });*/
+    });
+})(jQuery);
+
+
+/* ------------------------------------ */
+/*  Swipebox init
+/* ------------------------------------ */
+;( function( $ ) {
+	$( '.swipebox' ).swipebox();
+} )( jQuery );

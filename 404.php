@@ -16,7 +16,7 @@
             
             <!-- header -->
 			<header>
-				<h1 class="entry-title"><?php _e('File Not Found', 'foundationbuddy'); ?></h1>
+				<h1 class="entry-title"><?php _e('File Not Found', 'magnificient'); ?></h1>
 			</header>
             <!-- /header -->
             
@@ -25,16 +25,16 @@
                 
                 <!-- error -->
 				<div class="error">
-					<p class="bottom"><?php _e('The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'foundationbuddy'); ?></p>
+					<p class="bottom"><?php _e('The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'magnificient'); ?></p>
 				</div>
                 <!-- /error -->
                 
                 <!-- options -->
-				<p><?php _e('Please try the following:', 'foundationbuddy'); ?></p>
+				<p><?php _e('Please try the following:', 'magnificient'); ?></p>
 				<ul> 
-					<li><?php _e('Check your spelling', 'foundationbuddy'); ?></li>
-					<li><?php printf(__('Return to the <a href="%s">home page</a>', 'foundationbuddy'), home_url()); ?></li>
-					<li><?php _e('Click the <a href="javascript:history.back()">Back</a> button', 'foundationbuddy'); ?></li>
+					<li><?php _e('Check your spelling', 'magnificient'); ?></li>
+					<li><?php printf(__('Return to the <a href="%s">home page</a>', 'magnificient'), home_url()); ?></li>
+					<li><?php _e('Click the <a href="javascript:history.back()">Back</a> button', 'magnificient'); ?></li>
 				</ul>
                 <!-- /options -->
                 

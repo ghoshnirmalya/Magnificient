@@ -24,7 +24,7 @@ require_once('library/cleanup.php'); // do all the cleaning and enqueue here
 
 /*
 2. library/enqueue-style.php
-    - enqueue Foundation and foundationbuddy CSS
+    - enqueue Foundation and magnificient CSS
 */
 require_once('library/enqueue-style.php');
 
@@ -87,11 +87,5 @@ require_once('library/theme-customizer.php');
     - add theme support
 */
 require_once('library/theme-support.php');
-
-/*
-13. library/custom-header.php
-    - add custom header
-*/
-require_once('library/custom-header.php');
 
 ?>

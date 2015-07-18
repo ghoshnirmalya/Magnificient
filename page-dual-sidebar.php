@@ -6,6 +6,15 @@ Template Name: Dual Sidebar
 
 <?php get_header(); ?>
 
+    </div>
+    <!-- /row -->
+</div>
+<!-- /container -->
+
+<!-- right-sidebar layout -->
+
+<?php get_template_part( 'templates/single-page', 'cover' ); ?>
+
         <aside id="left-sidebar" class="small-12 large-3 columns">
             <?php get_sidebar(); ?>
         </aside><!-- /#sidebar -->
@@ -20,7 +29,6 @@ Template Name: Dual Sidebar
             <article <?php post_class('single-card') ?> id="post-<?php the_ID(); ?>">
                 <header>
                     <h1 class="entry-title single-post-header-title"><?php the_title(); ?></h1>
-                    <?php foundationbuddy_entry_meta(); ?>
                 </header>
                     <!-- featured image -->
                     <?php get_template_part( 'templates/featured', 'image' ); ?>
@@ -29,9 +37,8 @@ Template Name: Dual Sidebar
                 <div class="entry-content"><?php the_content(); ?></div>
                 <div class="separator"></div>
                 <div class="after-post-footer">
-                    <?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'foundationbuddy'), 'after' => '</p></nav>' )); ?>
-                    <p class="entry-tags"><?php the_tags(); ?></p>
-                    <?php edit_post_link('Edit this Post'); ?>
+                    <?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'magnificient'), 'after' => '</p></nav>' )); ?>
+                    <?php edit_post_link(); ?>
                 </div>
             </article>
             <!-- /article -->
@@ -41,25 +48,15 @@ Template Name: Dual Sidebar
             <?php get_template_part( 'templates/post', 'navigation' ); ?>
             <!-- /post navigation -->
             
-            
-            
-            
             <!-- author -->
             <div class="separator"></div>
             <?php get_template_part( 'templates/author', 'bio' ); ?>
             <!-- /author -->
             
-            
             <!-- related posts -->
             <div class="separator"></div>
             <?php get_template_part( 'templates/related', 'posts' ); ?>
             <!-- /related posts -->
-            
-            
-            <!-- comments -->
-            <div class="separator"></div>
-            <?php comments_template(); ?>
-            <!-- /comments -->
         
             <?php endwhile; // End the loop ?>
         </div>

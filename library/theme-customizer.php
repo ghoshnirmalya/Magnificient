@@ -18,33 +18,33 @@
 
 
 
-if ( ! function_exists( 'foundationbuddy_customizer_functions' ) ) {
-    function foundationbuddy_customizer_functions( $wp_customize ) {
+if ( ! function_exists( 'magnificient_customizer_functions' ) ) {
+    function magnificient_customizer_functions( $wp_customize ) {
         
         /*sections*/
         /*logo*/
-        $wp_customize->add_section( 'foundationbuddy_logo_section' , array(
-            'title'       => __( 'Logo', 'foundationbuddy' ),
+        $wp_customize->add_section( 'magnificient_logo_section' , array(
+            'title'       => __( 'Logo', 'magnificient' ),
             'priority'    => 30,
             'description' => 'Upload a logo to replace the default site name and description in the header',
         ) );
         
         /*favicon*/
-        $wp_customize->add_section( 'foundationbuddy_favicon_section' , array(
-            'title'       => __( 'Favicon', 'foundationbuddy' ),
+        $wp_customize->add_section( 'magnificient_favicon_section' , array(
+            'title'       => __( 'Favicon', 'magnificient' ),
             'priority'    => 30,
             'description' => 'Upload a favicon for your website',
         ) );
         
         /*settings*/
         /*logo*/
-        $wp_customize->add_setting( 'foundationbuddy_logo',
+        $wp_customize->add_setting( 'magnificient_logo',
         array(
             'sanitize_callback' => 'esc_url_raw'
         ));
         
         /*favicon*/
-        $wp_customize->add_setting( 'foundationbuddy_favicon',
+        $wp_customize->add_setting( 'magnificient_favicon',
         array(
             'sanitize_callback' => 'esc_url_raw'
         ));
@@ -52,23 +52,23 @@ if ( ! function_exists( 'foundationbuddy_customizer_functions' ) ) {
         
         /*control*/
         /*logo*/
-        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'foundationbuddy_logo', array(
-            'label'        => __( 'Logo', 'foundationbuddy' ),
-            'section'    => 'foundationbuddy_logo_section',
-            'settings'   => 'foundationbuddy_logo',
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'magnificient_logo', array(
+            'label'        => __( 'Logo', 'magnificient' ),
+            'section'    => 'magnificient_logo_section',
+            'settings'   => 'magnificient_logo',
         ) ) );
 
         /*favicon*/
-        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'foundationbuddy_favicon', array(
-            'label'        => __( 'Favicon', 'foundationbuddy' ),
-            'section'    => 'foundationbuddy_favicon_section',
-            'settings'   => 'foundationbuddy_favicon',
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'magnificient_favicon', array(
+            'label'        => __( 'Favicon', 'magnificient' ),
+            'section'    => 'magnificient_favicon_section',
+            'settings'   => 'magnificient_favicon',
         ) ) );
 
     }
 }
 
-add_action('customize_register', 'foundationbuddy_customizer_functions');
+add_action('customize_register', 'magnificient_customizer_functions');
 
 
 

@@ -1,7 +1,7 @@
 <?php
-if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
+if ( ! function_exists( 'magnificient_sidebar_widgets' ) ) :
 
-    function foundationbuddy_sidebar_widgets() {
+    function magnificient_sidebar_widgets() {
 
         /* ------------------------------------------------------------------------- *
          *  Sidebar-1 (Primary Sidebar)
@@ -10,7 +10,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         foreach ($sidebars as $sidebar) {
             register_sidebar(array('name'=> $sidebar,
                 'id' => 'Sidebar-1',
-                'description' => __( 'Displays the primary sidebar. If only any layout with a single sidebar is chosen, this sidebar is shown.  This sidebar is the one which is always on the left side if any layout with a dual sidebar is choosen.', 'foundationbuddy' ),
+                'description' => __( 'Displays the primary sidebar. If only any layout with a single sidebar is chosen, this sidebar is shown.  This sidebar is the one which is always on the left side if any layout with a dual sidebar is choosen.', 'magnificient' ),
                 'before_widget' => '<article id="%1$s" class="panel widget %2$s">',
                 'after_widget' => '</article>',
                 'before_title' => '<h4>',
@@ -25,7 +25,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         foreach ($sidebars as $sidebar) {
             register_sidebar(array('name'=> $sidebar,
                 'id' => 'Sidebar-2',
-                'description' => __( 'Displays the secondary sidebar. If only any layout with a dual sidebar is chosen, this sidebar is shown in addition to the primary sidebar (Sidebar-1). This sidebar is the one which is always on the right side.', 'foundationbuddy' ),
+                'description' => __( 'Displays the secondary sidebar. If only any layout with a dual sidebar is chosen, this sidebar is shown in addition to the primary sidebar (Sidebar-1). This sidebar is the one which is always on the right side.', 'magnificient' ),
                 'before_widget' => '<article id="%1$s" class="panel widget %2$s">',
                 'after_widget' => '</article>',
                 'before_title' => '<h4>',
@@ -40,7 +40,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         foreach ($sidebars as $sidebar) {
             register_sidebar(array('name'=> $sidebar,
                 'id' => 'Footer-1',
-                'description' => __( 'This is the footer which is always on the extreme left side of the footer. This is the first footer from the left if all the footer sidebars are activated.', 'foundationbuddy' ),
+                'description' => __( 'This is the footer which is always on the extreme left side of the footer. This is the first footer from the left if all the footer sidebars are activated.', 'magnificient' ),
                 'before_widget' => '<article id="%1$s" class="panel widget %2$s">',
                 'after_widget' => '</article>',
                 'before_title' => '<h4>',
@@ -55,7 +55,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         foreach ($sidebars as $sidebar) {
             register_sidebar(array('name'=> $sidebar,
                 'id' => 'Footer-2',
-                'description' => __( 'This is the second footer from the left if all the footer sidebars are activated. If the Footer-1 and Footer-2 sidebars are activated, this footer-sidebar is shown on the right.', 'foundationbuddy' ),
+                'description' => __( 'This is the second footer from the left if all the footer sidebars are activated. If the Footer-1 and Footer-2 sidebars are activated, this footer-sidebar is shown on the right.', 'magnificient' ),
                 'before_widget' => '<article id="%1$s" class="panel widget %2$s">',
                 'after_widget' => '</article>',
                 'before_title' => '<h4>',
@@ -70,7 +70,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         foreach ($sidebars as $sidebar) {
             register_sidebar(array('name'=> $sidebar,
                 'id' => 'Footer-3',
-                'description' => __( 'This is the third footer from the left if all the footer sidebars are activated. If the Footer-1, Footer-2 and Footer-3 sidebars are activated, this footer-sidebar is shown on the right.', 'foundationbuddy' ),
+                'description' => __( 'This is the third footer from the left if all the footer sidebars are activated. If the Footer-1, Footer-2 and Footer-3 sidebars are activated, this footer-sidebar is shown on the right.', 'magnificient' ),
                 'before_widget' => '<article id="%1$s" class="panel widget %2$s">',
                 'after_widget' => '</article>',
                 'before_title' => '<h4>',
@@ -85,7 +85,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         foreach ($sidebars as $sidebar) {
             register_sidebar(array('name'=> $sidebar,
                 'id' => 'Footer-4',
-                'description' => __(  'This is the fourth footer from the left if all the footer sidebars are activated. This footer is always on the right side of the footer.', 'foundationbuddy' ),
+                'description' => __(  'This is the fourth footer from the left if all the footer sidebars are activated. This footer is always on the right side of the footer.', 'magnificient' ),
                 'before_widget' => '<article id="%1$s" class="panel widget %2$s">',
                 'after_widget' => '</article>',
                 'before_title' => '<h4>',
@@ -100,7 +100,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         foreach ($sidebars as $sidebar) {
             register_sidebar(array('name'=> $sidebar,
                 'id' => 'custom-homepage-section-2-widget-1',
-                'description' => __(  'This is the first widget which is present on the second section of the custom homepage. This widget is shown on the left of all the widgets which are present under the second section of the custom homepage.', 'foundationbuddy' ),
+                'description' => __(  'This is the first widget which is present on the second section of the custom homepage. This widget is shown on the left of all the widgets which are present under the second section of the custom homepage.', 'magnificient' ),
                 'before_widget' => '<div class="panel"><article id="%1$s" class="panel widget %2$s">',
                 'after_widget' => '</article></div>',
                 'before_title' => '<h4>',
@@ -115,7 +115,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         foreach ($sidebars as $sidebar) {
             register_sidebar(array('name'=> $sidebar,
                 'id' => 'custom-homepage-section-2-widget-2',
-                'description' => __(  'This is the second widget which is present on the second section of the custom homepage. This widget is shown on the second from left of all the widgets which are present under the second section of the custom homepage.', 'foundationbuddy' ),
+                'description' => __(  'This is the second widget which is present on the second section of the custom homepage. This widget is shown on the second from left of all the widgets which are present under the second section of the custom homepage.', 'magnificient' ),
                 'before_widget' => '<div class="panel"><article id="%1$s" class="panel widget %2$s">',
                 'after_widget' => '</article></div>',
                 'before_title' => '<h4>',
@@ -130,7 +130,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         foreach ($sidebars as $sidebar) {
             register_sidebar(array('name'=> $sidebar,
                 'id' => 'custom-homepage-section-2-widget-3',
-                'description' => __(  'This is the third widget which is present on the second section of the custom homepage. This widget is shown on the third from left of all the widgets which are present under the second section of the custom homepage.', 'foundationbuddy' ),
+                'description' => __(  'This is the third widget which is present on the second section of the custom homepage. This widget is shown on the third from left of all the widgets which are present under the second section of the custom homepage.', 'magnificient' ),
                 'before_widget' => '<div class="panel"><article id="%1$s" class="panel widget %2$s">',
                 'after_widget' => '</article></div>',
                 'before_title' => '<h4>',
@@ -145,7 +145,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         foreach ($sidebars as $sidebar) {
             register_sidebar(array('name'=> $sidebar,
                 'id' => 'custom-homepage-section-2-widget-4',
-                'description' => __(  'This is the last widget which is present on the second section of the custom homepage. This widget is shown on the right of all the widgets which are present under the second section of the custom homepage.', 'foundationbuddy' ),
+                'description' => __(  'This is the last widget which is present on the second section of the custom homepage. This widget is shown on the right of all the widgets which are present under the second section of the custom homepage.', 'magnificient' ),
                 'before_widget' => '<div class="panel"><article id="%1$s" class="panel widget %2$s">',
                 'after_widget' => '</article></div>',
                 'before_title' => '<h4>',
@@ -161,7 +161,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         foreach ($sidebars as $sidebar) {
             register_sidebar(array('name'=> $sidebar,
                 'id' => 'custom-homepage-section-4-widget-1',
-                'description' => __(  'This is the first widget which is present on the fourth section of the custom homepage. This widget is shown on the left of all the widgets which are present under the fourth section of the custom homepage.', 'foundationbuddy' ),
+                'description' => __(  'This is the first widget which is present on the fourth section of the custom homepage. This widget is shown on the left of all the widgets which are present under the fourth section of the custom homepage.', 'magnificient' ),
                 'before_widget' => '<div class="panel"><article id="%1$s" class="panel widget %2$s">',
                 'after_widget' => '</article></div>',
                 'before_title' => '<h4>',
@@ -176,7 +176,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         foreach ($sidebars as $sidebar) {
             register_sidebar(array('name'=> $sidebar,
                 'id' => 'custom-homepage-section-4-widget-2',
-                'description' => __(  'This is the second widget which is present on the fourth section of the custom homepage. This widget is shown on the second from left of all the widgets which are present under the fourth section of the custom homepage.', 'foundationbuddy' ),
+                'description' => __(  'This is the second widget which is present on the fourth section of the custom homepage. This widget is shown on the second from left of all the widgets which are present under the fourth section of the custom homepage.', 'magnificient' ),
                 'before_widget' => '<div class="panel"><article id="%1$s" class="panel widget %2$s">',
                 'after_widget' => '</article></div>',
                 'before_title' => '<h4>',
@@ -191,7 +191,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         foreach ($sidebars as $sidebar) {
             register_sidebar(array('name'=> $sidebar,
                 'id' => 'custom-homepage-section-4-widget-3',
-                'description' => __(  'This is the third widget which is present on the fourth section of the custom homepage. This widget is shown on the third from left of all the widgets which are present under the fourth section of the custom homepage.', 'foundationbuddy' ),
+                'description' => __(  'This is the third widget which is present on the fourth section of the custom homepage. This widget is shown on the third from left of all the widgets which are present under the fourth section of the custom homepage.', 'magnificient' ),
                 'before_widget' => '<div class="panel"><article id="%1$s" class="panel widget %2$s">',
                 'after_widget' => '</article></div>',
                 'before_title' => '<h4>',
@@ -206,7 +206,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         foreach ($sidebars as $sidebar) {
             register_sidebar(array('name'=> $sidebar,
                 'id' => 'custom-homepage-section-4-widget-4',
-                'description' => __(  'This is the last widget which is present on the fourth section of the custom homepage. This widget is shown on the right of all the widgets which are present under the fourth section of the custom homepage.', 'foundationbuddy' ),
+                'description' => __(  'This is the last widget which is present on the fourth section of the custom homepage. This widget is shown on the right of all the widgets which are present under the fourth section of the custom homepage.', 'magnificient' ),
                 'before_widget' => '<div class="panel"><article id="%1$s" class="panel widget %2$s">',
                 'after_widget' => '</article></div>',
                 'before_title' => '<h4>',
@@ -216,7 +216,7 @@ if ( ! function_exists( 'foundationbuddy_sidebar_widgets' ) ) :
         
     }
 
-add_action( 'widgets_init', 'foundationbuddy_sidebar_widgets' );
+add_action( 'widgets_init', 'magnificient_sidebar_widgets' );
 
 endif;
 ?>

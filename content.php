@@ -17,7 +17,7 @@
         <!-- post-entry-meta -->
         <div class="post-entry-meta">
 		  <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-		  <?php foundationbuddy_entry_meta(); ?>
+		  <?php magnificient_entry_meta(); ?>
         </div>
         <!-- /post-entry-meta -->
         

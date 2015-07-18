@@ -6,6 +6,15 @@ Template Name: Full Width
 
 <?php get_header(); ?>
 
+	</div>
+    <!-- /row -->
+</div>
+<!-- /container -->
+
+<!-- right-sidebar layout -->
+
+<?php get_template_part( 'templates/single-page', 'cover' ); ?>
+
 <!-- Row for main content area -->
 	<div class="small-12 large-12 columns" id="page-content" role="main">
 	
@@ -14,16 +23,14 @@ Template Name: Full Width
 		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 			<header>
 				<h1 class="entry-title"><?php the_title(); ?></h1>
-				<?php foundationbuddy_entry_meta(); ?>
 			</header>
 			<div class="entry-content">
 				<?php the_content(); ?>
 			</div>
-			<footer>
-				<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'foundationbuddy'), 'after' => '</p></nav>' )); ?>
-				<p><?php the_tags(); ?></p>
-			</footer>
-			<?php comments_template(); ?>
+			<div class="after-post-footer">
+				<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'magnificient'), 'after' => '</p></nav>' )); ?>
+				<?php edit_post_link(); ?>
+			</div>
 		</article>
 	<?php endwhile; // End the loop ?>
 

@@ -1,10 +1,10 @@
 <?php
-    class foundationbuddy_RandomPostWidget extends WP_Widget
+    class magnificient_RandomPostWidget extends WP_Widget
     {
-      function foundationbuddy_RandomPostWidget()
+      function magnificient_RandomPostWidget()
       {
-        $widget_ops = array('classname' => 'foundationbuddy_RandomPostWidget', 'description' => __( 'Displays a random post with thumbnail', 'foundationbuddy' ) );
-        $this->WP_Widget('foundationbuddy_RandomPostWidget', __( 'Random Post and Thumbnail', 'foundationbuddy' ), $widget_ops);
+        $widget_ops = array('classname' => 'magnificient_RandomPostWidget', 'description' => __( 'Displays a random post with thumbnail', 'magnificient' ) );
+        $this->WP_Widget('magnificient_RandomPostWidget', __( 'Random Post and Thumbnail', 'magnificient' ), $widget_ops);
       }
 
       function form($instance)
@@ -60,5 +60,5 @@
       }
 
     }
-    add_action( 'widgets_init', create_function('', 'return register_widget("foundationbuddy_RandomPostWidget");') );
+    add_action( 'widgets_init', create_function('', 'return register_widget("magnificient_RandomPostWidget");') );
 ?>

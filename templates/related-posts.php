@@ -26,7 +26,7 @@
             <a rel="external" href="<?php the_permalink()?>">
                 <div class="related-post-image">
                     <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } else { ?>
-                    <img src="<?php echo get_template_directory_uri() . '/images/defaults/default-background.jpg' ?>" alt="<?php _e('Default Fallback','foundationbuddy'); ?>" class="img-responsive"/>
+                    <img src="<?php echo get_template_directory_uri() . '/images/defaults/default-background.jpg' ?>" alt="<?php _e('Default Fallback','magnificient'); ?>" class="img-responsive"/>
                     <?php } ?>
                 </div>
                 <br />

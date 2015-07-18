@@ -1,7 +1,7 @@
 <?php
 // Pagination
-if ( ! function_exists( 'foundationbuddy_pagination' ) ) :
-function foundationbuddy_pagination() {
+if ( ! function_exists( 'magnificient_pagination' ) ) :
+function magnificient_pagination() {
 	global $wp_query;
 
 	$big = 999999999; // This needs to be an unlikely integer
@@ -14,8 +14,8 @@ function foundationbuddy_pagination() {
 		'total' => $wp_query->max_num_pages,
 		'mid_size' => 5,
 		'prev_next' => true,
-	    'prev_text' => __( '&laquo;', 'foundationbuddy' ),
-	    'next_text' => __( '&raquo;', 'foundationbuddy' ),
+	    'prev_text' => __( '&laquo;', 'magnificient' ),
+	    'next_text' => __( '&raquo;', 'magnificient' ),
 		'type' => 'list',
 	) );
 
@@ -39,16 +39,16 @@ endif;
  * A fallback when no navigation is selected by default.
  */
 
-if ( ! function_exists( 'foundationbuddy_menu_fallback' ) ) :
-function foundationbuddy_menu_fallback() {
+if ( ! function_exists( 'magnificient_menu_fallback' ) ) :
+function magnificient_menu_fallback() {
     if( current_user_can( 'manage_options' ) ){
         echo '<div class="alert-box secondary">';
         // Translators 1: Link to Menus, 2: Link to Customize
-            printf( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.', 'foundationbuddy' ),
-                sprintf(  __( '<a href="%s">Menus</a>', 'foundationbuddy' ),
+            printf( __( 'Please assign a menu to the primary menu location under %1$s or %2$s the design.', 'magnificient' ),
+                sprintf(  __( '<a href="%s">Menus</a>', 'magnificient' ),
                     get_admin_url( get_current_blog_id(), 'nav-menus.php' )
                 ),
-                sprintf(  __( '<a href="%s">Customize</a>', 'foundationbuddy' ),
+                sprintf(  __( '<a href="%s">Customize</a>', 'magnificient' ),
                     get_admin_url( get_current_blog_id(), 'customize.php' )
                 )
             );
@@ -58,22 +58,22 @@ function foundationbuddy_menu_fallback() {
 endif;
 
 // Add Foundation 'active' class for the current menu item
-if ( ! function_exists( 'foundationbuddy_active_nav_class' ) ) :
-function foundationbuddy_active_nav_class( $classes, $item ) {
+if ( ! function_exists( 'magnificient_active_nav_class' ) ) :
+function magnificient_active_nav_class( $classes, $item ) {
 	if ( 1 == $item->current || true == $item->current_item_ancestor ) {
 		$classes[] = 'active';
 	}
 	return $classes;
 }
-add_filter( 'nav_menu_css_class', 'foundationbuddy_active_nav_class', 10, 2 );
+add_filter( 'nav_menu_css_class', 'magnificient_active_nav_class', 10, 2 );
 endif;
 
 /**
  * Use the active class of ZURB Foundation on wp_list_pages output.
  * From required+ Foundation http://themes.required.ch
  */
-if ( ! function_exists( 'foundationbuddy_active_list_pages_class' ) ) :
-function foundationbuddy_active_list_pages_class( $input ) {
+if ( ! function_exists( 'magnificient_active_list_pages_class' ) ) :
+function magnificient_active_list_pages_class( $input ) {
 
 	$pattern = '/current_page_item/';
 	$replace = 'current_page_item active';
@@ -82,11 +82,11 @@ function foundationbuddy_active_list_pages_class( $input ) {
 
 	return $output;
 }
-add_filter( 'wp_list_pages', 'foundationbuddy_active_list_pages_class', 10, 2 );
+add_filter( 'wp_list_pages', 'magnificient_active_list_pages_class', 10, 2 );
 endif;
 
-if ( ! class_exists( 'foundationbuddy_comments' ) ) :
-class foundationbuddy_comments extends Walker_Comment{
+if ( ! class_exists( 'magnificient_comments' ) ) :
+class magnificient_comments extends Walker_Comment{
 
 	// init classwide variables
 	var $tree_type = 'comment';
@@ -97,7 +97,7 @@ class foundationbuddy_comments extends Walker_Comment{
 	 * start_lvl() only goes as high as 1 deep nested comments */
 	function __construct() { ?>
          
-        <h3><?php comments_number( __( 'No Responses to', 'foundationbuddy' ), __( 'One Response to', 'foundationbuddy' ), __( '% Responses to', 'foundationbuddy' ) ); ?> &#8220;<?php the_title(); ?>&#8221;</h3>
+        <h3><?php comments_number( __( 'No Responses to', 'magnificient' ), __( 'One Response to', 'magnificient' ), __( '% Responses to', 'magnificient' ) ); ?> &#8220;<?php the_title(); ?>&#8221;</h3>
         <ol class="comment-list">
          
     <?php }
@@ -137,8 +137,8 @@ class foundationbuddy_comments extends Walker_Comment{
 			
 			<div class="author-meta vcard author">  
 			
-			<?php printf( __( '<cite class="fn">%s</cite>', 'foundationbuddy' ), get_comment_author_link() ) ?>
-			<time datetime="<?php echo comment_date( 'c' ) ?>"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf( __( '%1$s', 'foundationbuddy' ), get_comment_date(),  get_comment_time() ) ?></a></time>
+			<?php printf( __( '<cite class="fn">%s</cite>', 'magnificient' ), get_comment_author_link() ) ?>
+			<time datetime="<?php echo comment_date( 'c' ) ?>"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf( __( '%1$s', 'magnificient' ), get_comment_date(),  get_comment_time() ) ?></a></time>
 			
 			</div><!-- /.comment-author -->
 			

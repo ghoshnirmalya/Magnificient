@@ -7,15 +7,7 @@
 
 <!-- right-sidebar layout -->
 
-<!-- featured-image -->
-<div class="featured-image-cover">
-<?php
-    if ( has_post_thumbnail() ) {
-        the_post_thumbnail();
-    } 
-?>
-</div>
-<!-- /featured-image -->
+<?php get_template_part( 'templates/single-page', 'cover' ); ?>
 
 <!-- container -->
     <div class="container" role="document">

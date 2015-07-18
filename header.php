@@ -16,7 +16,7 @@
 	<meta name="viewport" content="width=device-width" />
 
 	<!-- Feed -->
-	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo esc_url( home_url() ); ?>/feed/">
+	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo esc_url( home_url('/') ); ?>/feed/">
 
 <?php wp_head(); ?>
 
@@ -25,84 +25,36 @@
 
 <!-- body -->
 <body <?php body_class('antialiased'); ?>>
- 
-    <!-- header -->
-    <header class="contain-to-grid">
 
-        <!-- primary-menu -->
-        <nav class="top-bar primary-menu" data-topbar>
+    <div class="off-canvas-wrap " data-offcanvas>
+        <div class="inner-wrap">
+            <nav class="tab-bar">
 
-            <!-- title-area -->
-            <ul class="title-area">
-                <li class="name"></li><!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-                <li class="toggle-topbar menu-icon"><a href="#"><span><i class="fa fa-arrow-down"></i> <?php _e('Menu','foundationbuddy'); ?></span></a></li>
-            </ul>
-            <!-- /title-area -->
-
-            <!-- top-bar-section -->
-            <section class="top-bar-section">
-                <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'foundationbuddy_menu_fallback', 'walker' => new foundationbuddy_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
-                
-                <!-- search bar -->
-                <ul class="right" >
-                    <li class="has-dropdown">
-                        <a href="#"><i class="fa fa-search"></i></a>
-                        <ul class="dropdown">
-                            <li>
-                                <div class="search-expand">
-                                    <div class="search-expand-inner">
-                                        <?php get_search_form(); ?>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul> 
-                <!-- /search bar -->
-                                
-            </section>
-            <!-- /top-bar-section -->
-
-        </nav>
-        <!-- primary-menu -->
-
-        <div class="row">
-            <div class="large-6 columns">
-                <!-- logo-container-section -->
-                <section class="logo-container-section">
-
-                    <!-- logo-container -->
-                    <?php get_template_part( 'templates/logo', 'container' ); ?>
-                    <!-- /logo-container -->
-
+              <?php if ( has_nav_menu('primary') ): ?>
+              
+                <section class="left-small">
+                  <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
                 </section>
-                <!-- /logo-container-section -->
-            </div>
-        </div>
+              
+              <?php endif; ?>
+              
+              <section class="middle tab-bar-section">
+                <h1 class='site-title'><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><?php bloginfo( 'name' ); ?><span class="muted"> <?php bloginfo( 'description' ); ?> </span></a></h1>
+              </section>
 
-        <!-- secondary-menu -->
-        <nav class="top-bar secondary-menu" data-topbar role="navigation">
+            </nav>
 
-            <!-- title-area -->
-            <ul class="title-area">
-                <li class="name"></li><!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-                <li class="toggle-topbar menu-icon"><a href="#"><span><i class="fa fa-arrow-down"></i> <?php _e('Menu','foundationbuddy'); ?></span></a></li>
-            </ul>
-            <!-- /title-area -->
-        
-            <!-- top-bar-section -->
-            <section class="top-bar-section secondary-menu">
-                <?php wp_nav_menu( array( 'theme_location' => 'additional', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'foundationbuddy_menu_fallback', 'walker' => new foundationbuddy_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
-            </section>
-            <!-- /top-bar-section -->
+            <?php if ( has_nav_menu('primary') ): ?>
 
-        </nav>
-        <!-- /secondary-menu -->
+              <aside class="left-off-canvas-menu">
+                <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="off-canvas-list">%3$s</ul>', 'fallback_cb' => 'magnificient_menu_fallback', 'walker' => new magnificient_offcanvas_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
+              </aside>
 
-    </header>
-    <!-- header -->
-    
-    <!-- Start the main container -->
-    <!-- container -->
-    <div class="container" role="document">
-        <div class="row">
+            <?php endif; ?>
+
+            <section class="main-section">
+                <!-- content goes here -->
+                <!-- Start the main container -->
+                <!-- container -->
+                <div class="container" role="document">
+                    <div class="row">     

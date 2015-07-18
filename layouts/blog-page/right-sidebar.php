@@ -14,19 +14,21 @@
         
             <?php while (have_posts()) : the_post(); ?>
             
+            <div class="single-page-meta-panel">
+                <header>
+                    <?php magnificient_entry_meta(); ?>
+                </header>
+            </div>
+            <div class="separator"></div>
+
             <!-- article -->
             <article <?php post_class('single-card') ?> id="post-<?php the_ID(); ?>">
-                <header>
-                    <h1 class="entry-title single-post-header-title"><?php the_title(); ?></h1>
-                    <?php foundationbuddy_entry_meta(); ?>
-                </header>
                 <?php get_template_part( 'library/post', 'formats' ); ?>
                 <div class="entry-content"><?php the_content(); ?></div>
                 <div class="separator"></div>
                 <div class="after-post-footer">
-                    <?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'foundationbuddy'), 'after' => '</p></nav>' )); ?>
-                    <p class="entry-tags"><?php the_tags(); ?></p>
-                    <?php edit_post_link('Edit this Post'); ?>
+                    <?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'magnificient'), 'after' => '</p></nav>' )); ?>
+                    <?php edit_post_link(); ?>
                 </div>
             </article>
             <!-- /article -->

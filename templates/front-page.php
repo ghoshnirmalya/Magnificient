@@ -10,7 +10,7 @@
 <!-- /container -->
 
 <!-- header-image -->
-    <?php get_template_part( 'templates/header', 'image' ); ?>
+    <?php get_template_part( 'templates/logo', 'container' ); ?>
 <!-- /header-image -->
 
 <!-- container -->
@@ -27,7 +27,7 @@
                         <?php while ( have_posts() ) : the_post(); ?>
                         <!-- the number of columns for the front page -->
                             <!-- three-column layout -->
-                            <div class="small-12 large-12 columns index-page">
+                            <div id="front-page-post-container">
                                 <?php get_template_part( 'content', get_post_format() ); ?>
                             </div>
                         <?php endwhile; ?>
@@ -39,10 +39,10 @@
                 <div class="separator"></div>
                 <!-- pagination -->
                 <?php /* Display navigation to next/previous pages when applicable */ ?>
-                <?php if ( function_exists('foundationbuddy_pagination') ) { foundationbuddy_pagination(); } else if ( is_paged() ) { ?>
+                <?php if ( function_exists('magnificient_pagination') ) { magnificient_pagination(); } else if ( is_paged() ) { ?>
                     <nav id="post-nav">
-                        <div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'foundationbuddy' ) ); ?></div>
-                        <div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'foundationbuddy' ) ); ?></div>
+                        <div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'magnificient' ) ); ?></div>
+                        <div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'magnificient' ) ); ?></div>
                     </nav>
                 <?php } ?>
                 <!-- /pagination -->

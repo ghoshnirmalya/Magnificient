@@ -9,108 +9,78 @@
 <!-- gallery post format -->
 <?php if ( has_post_format( 'gallery' ) ):  // Gallery ?>
 
-    <!-- show a slider if the post format selected is 'Gallery' -->
-    <?php $images = foundationbuddy_post_images(); if ( !empty($images) ): ?>
-        
-        <!-- slider -->
-        
-            <!-- orbit-container -->
-            <div class="orbit-container">
-                <div class="small-12 large-12 columns slider" id="slider-content-<?php the_ID(); ?>">
-                    <ul class="slides" data-orbit>
-                        <?php foreach ( $images as $image ): ?>
-                            <li>
-                                <?php $imageid = wp_get_attachment_image_src($image->ID,'large'); ?>
-                                <img src="<?php echo $imageid[0]; ?>" alt="<?php echo $image->post_title; ?>">
-
-                                <?php if ( $image->post_excerpt ): ?>
-                                    <div class="orbit-caption"><?php echo $image->post_excerpt; ?></div>
-                                <?php endif; ?>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            </div>
-            <!-- /orbit-container -->
-            
-        <!-- /slider -->
-
-        <!-- lightbox -->
-            
-            <div class="small-12 large-12 columns lightbox" id="lightbox-content">
-                <div class="js-masonry" data-masonry-options='{ "columnWidth": 0, "itemSelector": "#masonry-image-gallery-items" }'>
-                    <ul class="clearing-thumbs small-block-grid-4">
-                    <!-- Lightbox is known to have issues with using the masonry plugin. If you still want to use it, uncomment the previous line and comment the line above this comment.
-                    <ul class="clearing-thumbs small-block-grid-4" data-clearing> -->
-                        <?php foreach ( $images as $image ): ?>
-                            <?php $imageid = wp_get_attachment_image_src($image->ID,'large'); ?>
-                            <li id="masonry-image-gallery-items">
-                                <a href="<?php echo $imageid[0]; ?>">
-                                    <img <?php if ( $image->post_excerpt ): ?>data-caption="<?php echo $image->post_excerpt; ?>" <?php endif; ?> src="<?php echo $imageid[0]; ?>">
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            </div>
-    
-        <!-- /lightbox -->
-
-    <?php endif; ?>
+    <style>
+        dl.gallery-item img {
+            display: none;
+        }
+    </style>
 
     <!-- show the lightbox for other images if any gallery is created but not using the gallery post format -->
-    <?php if ( get_post_gallery() ) : $gallery = get_post_gallery( get_the_ID(), false );
-        
-        //first show a slider for all the images and then show a masonry layout all images
-        //<!-- slider -->
-        
-            echo '<div class="small-12 large-12 columns slider" id="slider-content"> ';        
-            echo "<ul data-orbit>";
-            foreach( $gallery['src'] AS $src ) {
-                $img_id = foundationbuddy_get_attachment_id_from_src($src);
-                $img_info =  foundationbuddy_get_attachment( $img_id );
-    ?>        
-                <li>
-                    <img src="<?php echo $src; ?>" class="my-custom-class" alt="<?php _e('Gallery image','foundationbuddy'); ?>" />
-                    <?php if ($img_info['caption']): ?>
-                        <div class="orbit-caption">
-                            <?php echo $img_info['caption']; ?>
-                        </div>
-                    <?php endif; ?>
-                </li>
-    <?php
-            }
-            echo "</ul>";
-            echo "</div>";
+    <?php if ( get_post_gallery() ) : $gallery = get_post_gallery( get_the_ID(), false ); ?>
+                
+        <!-- slider -->   
+        <div class="small-12 large-12 columns flexslider" id="slider">        
+            <ul class="slides">
             
-    ?>
+                <?php foreach( $gallery['src'] AS $src ) {
+                    $img_id = maginficient_get_attachment_id_from_src($src);
+                    $img_info = maginficient_get_attachment( $img_id );
+                    $img_caption = $img_info['caption'];
+                ?>
+                
+                <li>
+                    <img src="<?php echo $src; ?>" class="my-custom-class" alt="<?php _e('Gallery image','maginficient'); ?>" />
+                    
+                    <?php if ($img_caption): ?><p class="flex-caption"><?php echo $img_caption; ?></p><?php endif; ?>
+                
+                </li>
+                <?php } ?>
+            </ul>
+        </div>    
         <!-- slider -->
 
-    <!-- lightbox -->
+        <!-- lightbox -->    
+        <div class="small-12 large-12 columns lightbox" id="lightbox-content">
+            <div id="lightbox-container">
+                <ul class="clearing-thumbs small-block-grid-4">
+                
+                <?php
+                    foreach( $gallery['src'] AS $src ) {
+                    $img_id = maginficient_get_attachment_id_from_src($src);
+                    $img_info =  maginficient_get_attachment( $img_id );
+                    $img_caption = $img_info['caption'];
+                ?>
+                    
+                    <li id="image-gallery-items">
+                        <a href="<?php echo $src; ?>" class="swipebox" title="<?php if ($img_caption){ echo $img_caption; } ?>">
+                            <img src="<?php echo $src; ?>">
+                        </a>
+                    </li>   
 
-        <?php
-                echo '<div class="small-12 large-12 columns lightbox" id="lightbox-content"> ';
-        ?>
-                <div class="js-masonry" data-masonry-options='{ "columnWidth": 0, "itemSelector": "#masonry-image-gallery-items" }'>
-        <?php
-            echo '<ul class="clearing-thumbs small-block-grid-4">';
-            /* Lightbox is known to have issues with using the masonry plugin. If you still want to use it, uncomment the previous line and comment the line above this comment. */
-            //echo '<ul class="clearing-thumbs small-block-grid-4" data-clearing>';
+                    <?php } ?>
+                
+                </ul>
+            </div>
+        </div>
+        <!-- /lightbox -->
 
+        <!-- lightbox gallery items masonry -->
+        <script type="text/javascript">
+            jQuery(function($) {
 
-            foreach( $gallery['src'] AS $src ) {
-                $img_id = foundationbuddy_get_attachment_id_from_src($src);
-                $img_info =  foundationbuddy_get_attachment( $img_id );
-        ?>
-                    <li id="masonry-image-gallery-items"><a href="<?php echo $src; ?>"><img data-caption="<?php if ($img_info['caption']){ echo $img_info['caption']; } ?>" src="<?php echo $src; ?>"></a></li>   
+                imagesLoaded( document.querySelector('#lightbox-container'), function( instance ) {
 
-                    <?php
-                }
-            echo "</ul>";
-            echo "</div></div>";
+                    $('#lightbox-container').masonry({
+                      itemSelector: '#image-gallery-items',
+                    });
 
-        //<!-- lightbox -->
-    endif;  ?>
+                });
+
+            });
+        </script> 
+        <!-- /lightbox gallery items masonry -->
+
+    <?php endif;  ?>
     
 <?php endif; ?>
 <!-- /gallery post format -->
@@ -120,11 +90,13 @@
 
 	<div class="post-format-image">
 		<figure class="figure">
-			<?php if ( has_post_thumbnail() ) {	
+			
+            <?php if ( has_post_thumbnail() ) {	
 				the_post_thumbnail('thumb-large'); 
 				$caption = get_post(get_post_thumbnail_id())->post_excerpt;
 				if ( isset($caption) && $caption ) echo '<figcaption>'.$caption.'</figcaption>';
 			} ?>
+            
 		</figure>
 	</div>
 	

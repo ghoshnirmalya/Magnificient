@@ -5,6 +5,15 @@ Template Name: Left Sidebar
 ?>
 
 <?php get_header(); ?>
+
+	</div>
+    <!-- /row -->
+</div>
+<!-- /container -->
+
+<!-- right-sidebar layout -->
+
+<?php get_template_part( 'templates/single-page', 'cover' ); ?>
     
     <aside id="left-sidebar" class="small-12 large-4 columns">
         <?php get_sidebar(); ?>
@@ -18,18 +27,15 @@ Template Name: Left Sidebar
 		<article <?php post_class('page-card') ?> id="post-<?php the_ID(); ?>">
 			<header>
 				<h1 class="entry-title"><?php the_title(); ?></h1>
-				<?php foundationbuddy_entry_meta(); ?>
 			</header>
 			<div class="entry-content">
 				<?php the_content(); ?>
 			</div>
-			<footer>
-				<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'foundationbuddy'), 'after' => '</p></nav>' )); ?>
-			</footer>
+			<div class="after-post-footer">
+				<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'magnificient'), 'after' => '</p></nav>' )); ?>
+				<?php edit_post_link(); ?>
+			</div>
 		</article>
-	<div class="separator"></div>
-
-		<?php comments_template(); ?>
 	<?php endwhile; // End the loop ?>
 
 	</div>
