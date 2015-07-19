@@ -36,7 +36,6 @@ if( ! function_exists( 'magnificient_theme_support' ) ) {
         add_theme_support( 'menus' );
         register_nav_menus(array(
             'primary' => __( 'Primary Navigation', 'magnificient' ),
-            'additional' => __( 'Additional Navigation', 'magnificient' ),
             'footer' => __( 'Footer Navigation', 'magnificient' )
         ));
 

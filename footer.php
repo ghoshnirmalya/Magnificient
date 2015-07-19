@@ -23,12 +23,16 @@
         <li class="toggle-topbar menu-icon"><a href="#"><span><i class="fa fa-arrow-down"></i> <?php _e('Menu','magnificient'); ?></span></a></li>
     </ul>
     <!-- /title-area -->
-	    
-    <!-- top-bar-section -->
-    <section class="top-bar-section footer-menu">
-	    <?php wp_nav_menu( array( 'theme_location' => 'footer', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'magnificient_menu_fallback', 'walker' => new magnificient_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
-    </section>
-    <!-- /top-bar-section -->
+	
+    <?php if ( has_nav_menu('footer') ): ?>    
+    
+        <!-- top-bar-section -->
+        <section class="top-bar-section footer-menu">
+	       <?php wp_nav_menu( array( 'theme_location' => 'footer', 'container' => false, 'depth' => 0, 'items_wrap' => '<ul class="left">%3$s</ul>', 'fallback_cb' => 'magnificient_menu_fallback', 'walker' => new magnificient_walker( array( 'in_top_bar' => true, 'item_type' => 'li', 'menu_type' => 'main-menu' ) ), ) ); ?>
+        </section>
+        <!-- /top-bar-section -->
+
+    <?php endif; ?>
         
 </nav>
 <!-- /footer-menu -->
@@ -66,11 +70,11 @@
     <!-- love-magnificient -->
 	<div class="row love-magnificient">
 		<div class="large-6 columns">
-                <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'> &copy; <?php bloginfo( 'name' ); ?></a>
+            <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'> &copy; <?php bloginfo( 'name' ); ?></a>
 		</div>
         
         <div class="large-6 columns copyright-right">
-                <p><?php _e('Powered by','magnificient'); ?> <a href="http://wordpress.org" rel="nofollow">WordPress</a></p>
+            <p><?php _e('Powered by','magnificient'); ?> <a href="http://wordpress.org" rel="nofollow">WordPress</a></p>
 		</div>
         
 	</div>
@@ -80,16 +84,8 @@
 
     </div>
 </div>
-<?php wp_footer(); ?>
 
-<script>
-	(function($) {
-		$(document).foundation();
-	})(jQuery);
-</script>
-<script>
-    new WOW().init();
-</script>
+<?php wp_footer(); ?>
 	
 </body>
 </html>
