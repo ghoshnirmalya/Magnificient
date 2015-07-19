@@ -3,6 +3,11 @@ Magnificient
 
 Magnificient is a versatile HTML5 responsive WordPress theme based on ZURB's Foundation. Magnificient is a WordPress theme which you can use for your personal blogging website or a story website. Magnificient gives you a clean layout with minimal interface.
 
+Screenshot
+==========
+
+<img src="https://raw.githubusercontent.com/ghoshnirmalya/Magnificient/master/screenshot.png">
+
 Requirements
 ============
 
