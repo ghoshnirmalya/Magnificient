@@ -24,7 +24,7 @@
 
 	<div class="featured-image-overlay">
 	<div class="featured-image-post-title">
-        <h1 class="entry-title single-post-header-title"><?php the_title(); ?></h1>
+        <h1 class="entry-title single-post-header-title"><?php echo single_tag_title( '', true ); ?></h1>
         
     </div>
     </div>

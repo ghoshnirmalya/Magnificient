@@ -22,12 +22,15 @@
     }
 ?>
 
+
 	<div class="featured-image-overlay">
 	<div class="featured-image-post-title">
-        <h1 class="entry-title single-post-header-title"><?php the_title(); ?></h1>
+		<?php
+            $author = get_the_author();
+        ?>
+        <h1 class="entry-title single-post-header-title"><?php echo $author; ?></h1>
         
     </div>
     </div>
 </div>
 <!-- /featured-image -->
-

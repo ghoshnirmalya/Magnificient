@@ -24,7 +24,10 @@
 
 	<div class="featured-image-overlay">
 	<div class="featured-image-post-title">
-        <h1 class="entry-title single-post-header-title"><?php the_title(); ?></h1>
+        <?php
+            $mySearch = new WP_Query("s=$s & showposts=-1");
+        ?>
+        <h1 class="entry-title single-post-header-title"><?php echo $mySearch->post_count; ?> Search results for "<?php echo esc_html( get_search_query( false ) ); ?>"</h1>
         
     </div>
     </div>

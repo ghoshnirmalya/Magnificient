@@ -7,13 +7,13 @@
 
 <!-- right-sidebar layout -->
 
-<?php get_template_part( 'templates/search-page', 'cover' ); ?>
+<?php get_template_part( 'templates/category-page', 'cover' ); ?>
 
 <!-- container -->
     <div class="container" role="document">
         <div class="row">
 
-            <?php get_template_part( 'layouts/search-page/page', 'template' ); ?>
+            <?php get_template_part( 'layouts/category-page/page', 'template' ); ?>
             <aside id="sidebar" class="small-12 large-4 columns">    
                 <?php get_sidebar(); ?>
             </aside><!-- /#sidebar -->
