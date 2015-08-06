@@ -22,6 +22,7 @@
     }
 ?>
 
+<?php if ( ! is_search() ) { ?>
 	<div class="featured-image-overlay">
 	<div class="featured-image-post-title">
         <h1 class="entry-title single-post-header-title"><?php the_title(); ?></h1>
@@ -30,4 +31,13 @@
     </div>
 </div>
 <!-- /featured-image -->
-
+<?php } else { ?>
+	<div class="featured-image-overlay">
+	<div class="featured-image-post-title">
+        <h1 class="entry-title single-post-header-title">Results for "<?php echo esc_html( get_search_query( false ) ); ?>"</h1>
+        
+    </div>
+    </div>
+</div>
+<!-- /featured-image -->
+<?php } ?>

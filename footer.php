@@ -74,7 +74,7 @@
 		</div>
         
         <div class="large-6 columns copyright-right">
-            <p><?php _e('Powered by','magnificient'); ?> <a href="http://wordpress.org" rel="nofollow">WordPress</a></p>
+            <p><?php _e('Powered by','magnificient'); ?> <a href="http://wordpress.org" rel="nofollow"> WordPress</a></p>
 		</div>
         
 	</div>
