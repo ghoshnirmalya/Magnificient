@@ -2,9 +2,19 @@
  * Admin
 /* ------------------------------------------------------------------------- */
 
+/*nav.top-bar.primary-menu {
+  margin-top: 32px;
+}*/
+
 @media screen and (max-width: 600px) {
     #wpadminbar {
       position: absolute;
       top: -46px;
     }
 }
+
+/*@media screen and (max-width: 783) {
+    nav.top-bar.primary-menu {
+      margin-top: 46px;
+    }
+}*/

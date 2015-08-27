@@ -4,9 +4,9 @@
  *  Prevent YouTube videos from overlapping content
 /* ------------------------------------------------------------------------- */
 
-if ( ! function_exists( 'maginficient_add_video_wmode_transparent' ) ) {
+if ( ! function_exists( 'magnificient_add_video_wmode_transparent' ) ) {
     
-    function maginficient_add_video_wmode_transparent($html, $url, $attr) {
+    function magnificient_add_video_wmode_transparent($html, $url, $attr) {
         if ( strpos( $html, "<embed src=" ) !== false )
            { return str_replace('</param><embed', '</param><param name="wmode" value="opaque"></param><embed wmode="opaque" ', $html); }
         elseif ( strpos ( $html, 'feature=oembed' ) !== false )
@@ -17,32 +17,32 @@ if ( ! function_exists( 'maginficient_add_video_wmode_transparent' ) ) {
     
 }
 
-add_filter( 'embed_oembed_html', 'maginficient_add_video_wmode_transparent', 10, 3);
+add_filter( 'embed_oembed_html', 'magnificient_add_video_wmode_transparent', 10, 3);
 
 
 /* ------------------------------------------------------------------------- *
  *  Custoom excerpt more
 /* ------------------------------------------------------------------------- */
 
-if ( ! function_exists( 'maginficient_excerpt_more' ) ) {
+if ( ! function_exists( 'magnificient_excerpt_more' ) ) {
     
-    function maginficient_excerpt_more( $more ) {
+    function magnificient_excerpt_more( $more ) {
         //return '...';
-        return '... <br><br> <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read More ', 'maginficient') . '</a>';
+        return '... <br><br> <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">' . __('Read More ', 'magnificient') . '</a>';
     }
     
 }
 
-add_filter('excerpt_more', 'maginficient_excerpt_more');
+add_filter('excerpt_more', 'magnificient_excerpt_more');
 
 
 /* ------------------------------------------------------------------------- *
  *  Add custom reply link
 /* ------------------------------------------------------------------------- */
 
-if ( ! function_exists( 'maginficient_add_comment_author_to_reply_link' ) ) {
+if ( ! function_exists( 'magnificient_add_comment_author_to_reply_link' ) ) {
     
-    function maginficient_add_comment_author_to_reply_link($link, $args, $comment){
+    function magnificient_add_comment_author_to_reply_link($link, $args, $comment){
         $comment = get_comment( $comment );
 
         // If no comment author is blank, use 'Anonymous'
@@ -51,7 +51,7 @@ if ( ! function_exists( 'maginficient_add_comment_author_to_reply_link' ) ) {
                 $user=get_userdata($comment->user_id);
                 $author=$user->user_login;
             } else {
-                $author = __('Anonymous', 'maginficient');
+                $author = __('Anonymous', 'magnificient');
             }
         } else {
             $author = $comment->comment_author;
@@ -66,16 +66,16 @@ if ( ! function_exists( 'maginficient_add_comment_author_to_reply_link' ) ) {
     
 }
 
-add_filter('comment_reply_link', 'maginficient_add_comment_author_to_reply_link', 10, 3);
+add_filter('comment_reply_link', 'magnificient_add_comment_author_to_reply_link', 10, 3);
 
 
 /* ------------------------------------------------------------------------- *
  *  Custom attachment post
 /* ------------------------------------------------------------------------- */
 
-if ( ! function_exists( 'maginficient_get_attachment' ) ) {
+if ( ! function_exists( 'magnificient_get_attachment' ) ) {
     
-    function maginficient_get_attachment( $attachment_id ) {
+    function magnificient_get_attachment( $attachment_id ) {
         $attachment = get_post( $attachment_id );
         return array(
             'alt' => get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true ),
@@ -94,9 +94,9 @@ if ( ! function_exists( 'maginficient_get_attachment' ) ) {
  *  Get images attached to post
 /* ------------------------------------------------------------------------- */
 
-if ( ! function_exists( 'maginficient_post_images' ) ) {
+if ( ! function_exists( 'magnificient_post_images' ) ) {
     
-    function maginficient_post_images( $args=array() ) {
+    function magnificient_post_images( $args=array() ) {
         global $post;
         $defaults = array(
             'numberposts'       => -1,
@@ -116,9 +116,9 @@ if ( ! function_exists( 'maginficient_post_images' ) ) {
 /* ------------------------------------------------------------------------- *
  *  Get image id from image src
 /* ------------------------------------------------------------------------- */
-if ( ! function_exists( 'maginficient_get_attachment_id_from_src' ) ) {
+if ( ! function_exists( 'magnificient_get_attachment_id_from_src' ) ) {
     
-    function maginficient_get_attachment_id_from_src ($image_src) {
+    function magnificient_get_attachment_id_from_src ($image_src) {
         global $wpdb;
         $query = "SELECT ID FROM {$wpdb->posts} WHERE guid='$image_src'";
         $id = $wpdb->get_var($query);
@@ -130,9 +130,9 @@ if ( ! function_exists( 'maginficient_get_attachment_id_from_src' ) ) {
 /* ------------------------------------------------------------------------- *
  *  Get total published post count
 /* ------------------------------------------------------------------------- */
-if ( ! function_exists( 'maginficient_get_total_published_post_count' ) ) {
+if ( ! function_exists( 'magnificient_get_total_published_post_count' ) ) {
     
-    function maginficient_get_total_published_post_count () {
+    function magnificient_get_total_published_post_count () {
         $published_posts_count = wp_count_posts()->publish;
         return $published_posts_count;
     }
@@ -148,9 +148,9 @@ if ( ! function_exists( 'maginficient_get_total_published_post_count' ) ) {
 /*  Outer wrapper (Default Fallback if woocommerce.php is not found)
 /* ------------------------------------------------------------------------- */
 
-if ( ! function_exists( 'maginficient_woocommerce_wrapper_start' ) ) {
+if ( ! function_exists( 'magnificient_woocommerce_wrapper_start' ) ) {
 
-    function maginficient_woocommerce_wrapper_start() {
+    function magnificient_woocommerce_wrapper_start() {
         echo '<div class="small-12 large-8 columns woocommerce-card" id="single-page-content" role="main">';
         echo '<div class="row-woocommerce"><article id="woocommerce">';
     }
@@ -158,16 +158,16 @@ if ( ! function_exists( 'maginficient_woocommerce_wrapper_start' ) ) {
 }
 
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-add_action('woocommerce_before_main_content', 'maginficient_woocommerce_wrapper_start', 10);
+add_action('woocommerce_before_main_content', 'magnificient_woocommerce_wrapper_start', 10);
 
 
 /* ------------------------------------------------------------------------- *
 /*  Inner wrapper (Default Fallback if woocommerce.php is not found)
 /* ------------------------------------------------------------------------- */
 
-if ( ! function_exists( 'maginficient_woocoomerce_wrapper_end' ) ) {
+if ( ! function_exists( 'magnificient_woocoomerce_wrapper_end' ) ) {
 
-    function maginficient_woocoomerce_wrapper_end() {
+    function magnificient_woocoomerce_wrapper_end() {
         echo '</article></div>';
         echo '</div>';
     }
@@ -175,16 +175,16 @@ if ( ! function_exists( 'maginficient_woocoomerce_wrapper_end' ) ) {
 }
 
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
-add_action('woocommerce_after_main_content', 'maginficient_woocoomerce_wrapper_end', 10);
+add_action('woocommerce_after_main_content', 'magnificient_woocoomerce_wrapper_end', 10);
 
 
 /* ------------------------------------------------------------------------- *
 /*  Sidebar
 /* ------------------------------------------------------------------------- */
 
-if ( ! function_exists( 'maginficient_woocoomerce_sidebar' ) ) {
+if ( ! function_exists( 'magnificient_woocoomerce_sidebar' ) ) {
 
-    function maginficient_woocoomerce_sidebar() {
+    function magnificient_woocoomerce_sidebar() {
         //echo '<div class="sidebar">';
         //get_template_part( 'layouts/blog-page/left', 'sidebar' );
         //echo '</div>';
@@ -197,16 +197,16 @@ if ( ! function_exists( 'maginficient_woocoomerce_sidebar' ) ) {
 }
 
 remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
-add_action( 'woocommerce_sidebar', 'maginficient_woocoomerce_sidebar', 10 );
+add_action( 'woocommerce_sidebar', 'magnificient_woocoomerce_sidebar', 10 );
 
 
 /* ------------------------------------------------------------------------- *
 /*  Related products count
 /* ------------------------------------------------------------------------- */
 
-if ( ! function_exists( 'maginficient_related_products_limit' ) ) {
+if ( ! function_exists( 'magnificient_related_products_limit' ) ) {
 
-    function maginficient_related_products_limit() {
+    function magnificient_related_products_limit() {
       global $product;
 
         $args['posts_per_page'] = 6;
@@ -215,9 +215,9 @@ if ( ! function_exists( 'maginficient_related_products_limit' ) ) {
     
 }
 
-if ( ! function_exists( 'maginficient_related_products_args' ) ) {
+if ( ! function_exists( 'magnificient_related_products_args' ) ) {
     
-    function maginficient_related_products_args( $args ) {
+    function magnificient_related_products_args( $args ) {
 
         $args['posts_per_page'] = 4; // 4 related products
         $args['columns'] = 2; // arranged in 2 columns
@@ -225,6 +225,6 @@ if ( ! function_exists( 'maginficient_related_products_args' ) ) {
     }
 }
 
-add_filter( 'woocommerce_output_related_products_args', 'maginficient_related_products_args' );
+add_filter( 'woocommerce_output_related_products_args', 'magnificient_related_products_args' );
 
 ?>
