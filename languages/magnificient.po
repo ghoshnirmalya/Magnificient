@@ -178,9 +178,9 @@ msgstr ""
 
 #.   /archive/search.
 #.   *
-#.   * @subpackage FoundationPress
-#.   * @since FoundationPress 1.0
-#. 
+#.   * @subpackage magnificient
+#.   * @since magnificient 1.0
+#.
 #: content.php:16
 msgid "Continue reading..."
 msgstr ""

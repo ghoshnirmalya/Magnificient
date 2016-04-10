@@ -3,16 +3,16 @@
 /* ------------------------------------------------------------------------- *
  *  The main functions.php file for WordPress Themes.
  *
- *  This file only contains the call to the files that are necessary for the 
+ *  This file only contains the call to the files that are necessary for the
  *  theme to function properly.
  *
- *  Use another file to use your own custom functions or edit the 
+ *  Use another file to use your own custom functions or edit the
  *  custom-functions.php file, which can found in the 'library' folder.
  *
- *  You can also create a new file in the 'library' folder and include that 
+ *  You can also create a new file in the 'library' folder and include that
  *  file here.
  *
- *  You can add new files here using the 'require_once()' syntax.  
+ *  You can add new files here using the 'require_once()' syntax.
 /* ------------------------------------------------------------------------- */
 
 /*
@@ -47,43 +47,37 @@ require_once('library/navigation.php'); // filter default wordpress menu classes
 require_once('library/custom-fonts.php');
 
 /*
-6. library/random-post-widget.php
-    - add random posts to sidebar
-*/
-require_once('library/random-post-widget.php');
-
-/*
-7. library/custom-functions.php
+6. library/custom-functions.php
     - add customs functions to the theme
 */
 require_once('library/custom-functions.php');
 
 /*
-8. library/entry-meta.php
+7. library/entry-meta.php
     - add entry metas to the theme contents
 */
 require_once('library/entry-meta.php');
 
 /*
-9. library/random-post-widget.php
+8. library/random-post-widget.php
     - add random posts to sidebar
 */
 require_once('library/widget-areas.php');
 
 /*
-10. library/enqueue-scripts.php
+9. library/enqueue-scripts.php
     - enqueues the js to the theme
 */
 require_once('library/enqueue-scripts.php');
 
 /*
-11. library/theme-customizer.php
+10. library/theme-customizer.php
     - add Customizer options for theme
 */
 require_once('library/theme-customizer.php');
 
 /*
-12. library/theme-support.php
+11. library/theme-support.php
     - add theme support
 */
 require_once('library/theme-support.php');

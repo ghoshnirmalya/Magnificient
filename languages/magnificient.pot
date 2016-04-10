@@ -1,4 +1,4 @@
-# Translation of 
+# Translation of
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -179,9 +179,9 @@ msgstr ""
 
 #.  /archive/search.
 #.  *
-#.  * @subpackage FoundationPress
-#.  * @since FoundationPress 1.0
-#. 
+#.  * @subpackage magnificient
+#.  * @since magnificient 1.0
+#.
 #: content.php:16
 msgid "Continue reading..."
 msgstr ""
